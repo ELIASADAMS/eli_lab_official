@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     path = path.slice(0, -'index.html'.length).replace(/\/$/, '');
   }
 
-  if (!path.startsWith('html/')) {
+  if (!path.startsWith('/html/')) {
     return;
   }
 
