@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .join(' ');
   }
 
-  const crumbs = [{ name: 'Home', url: '../../../../index.html' }];
+  const crumbs = [{ name: 'Home', url: '/index.html' }];
 
   for (let i = 0; i < segments.length; i++) {
     const folderPath = segments.slice(0, i + 1).join('/');
