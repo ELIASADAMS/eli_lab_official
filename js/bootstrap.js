@@ -276,6 +276,9 @@ if (typeof jQuery === "undefined") {
     return this;
   };
 
+
+  import { inject } from "@vercel/analytics"
+
   // BUTTON DATA-API
   // ===============
 
