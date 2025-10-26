@@ -8,7 +8,7 @@
  *     title: 'Meatpacking Biennale: Part 1',
  *     date: 'February 22, 2022 at 19:00 PM',
  *     url: 'meatpacking_biennale.html',
- *     imgSrc: '../../../images/Performances/meatbiennale.jpg',
+ *     imgSrc: '../../../images/Performances/meatbiennale.png',
  *     imgAlt: 'Exhibition preview',
  *     description: '"I once had a vision: I saw true horror...' // full descriptive text
  *   }
