@@ -19,7 +19,7 @@ html {
   --text-light: #FFFFFF;
 }
 
-/* Typography with Bahnschrift simulation and fallbacks */
+/* Typography with Bahnschrift */
 body {
   font-family: 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 400;
