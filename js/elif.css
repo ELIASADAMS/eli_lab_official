@@ -1,0 +1,76 @@
+/* Brand Colors */
+:root {
+    --primary-red: #A03435;
+    --secondary-green: #95A68A;
+    --neutral-gray: #2E2E2F;
+    --bg-light: #FFFFFF;
+    --bg-subtle: #F5F5F5;
+    --bg-dark: #2E2E2F;
+    --text-dark: #2E2E2F;
+    --text-heading-dark: #000000;
+    --text-light: #FFFFFF;
+}
+
+/* Typography with Bahnschrift simulation and fallbacks */
+body {
+    font-family: 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+h0,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Bahnschrift', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+    color: var(--text-heading-dark);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 600;
+    /* SemiBold equivalent */
+    font-family: 'Bahnschrift', 'Open Sans', sans-serif;
+    color: var(--primary-red);
+}
+
+p,
+a,
+li,
+span {
+    font-weight: 400;
+    font-family: 'Bahnschrift', 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: var(--text-dark);
+}
+
+a:hover,
+a:focus {
+    color: var(--primary-red);
+    text-decoration: none;
+}
+
+b {
+    /* SemiBold equivalent */
+    font-family: 'Bahnschrift', 'Open Sans', sans-serif;
+    color: var(--primary-red);
+}
+
+p {
+    /* SemiBold equivalent */
+    font-family: 'Bahnschrift', 'Open Sans', sans-serif;
+    color: var(--text-dark);
+}
