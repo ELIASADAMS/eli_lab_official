@@ -1,141 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>eli_lab - Artist Statement & Projects</title>
-  <meta name="description" content="eli_lab Artist Statement and Projects" />
+  <title>About — Ilya Minin (Eli) | eli_lab</title>
+  <meta name="description" content="About Ilya Minin (Eli), digital and multimedia artist, and the eli_lab archive." />
   <link href="../../css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../css/modern-business.css" rel="stylesheet" />
   <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <style>
-    p {
-      text-align: justify;
-      line-height: 1.5;
-    }
-
-    .project-caption p {
-      margin-bottom: 0;
-    }
+    .about-copy p { text-align: justify; line-height: 1.6; }
+    .archive-note { color: #777; font-size: 0.95em; }
+    .project-caption p { margin-bottom: 0; }
   </style>
 </head>
-
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="main-nav"></nav>
 
-  <div class="container" style="margin-top: 70px;">
+  <main class="container" style="margin-top: 70px;">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">Artist Statement</h1>
+        <h1 class="page-header">About</h1>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6">
+    <section class="row about-copy">
+      <div class="col-md-7">
         <h2>Ilya Minin (Eli)</h2>
-        <p>Exploring identity, memory, and the digital uncanny through CGI, animation, and immersive media, Ilya Minin
-          (Eli) brings his Rodchenko School training to craft artworks reflecting tensions between technology, memory,
-          and constructed realities.</p>
-        <p>His centerpiece, <strong>EWP Project (2023)</strong>, is a multichannel CG animation tracing a traveler’s
-          return to a morphed, dreamlike hometown, blending decaying urban landscapes with abstract symbolism and
-          collaborative sound and lighting design to explore personal and societal truths in the digital age.</p>
-        <p>Works like <em>Last Day of Kasane Teto</em> and interactive installations extend this practice, probing
-          digital melancholy and the trauma of technological disembodiment through a critical, conceptual use of
-          darkness.</p>
-        <p><a href="../../html/extra/brief_history.html">Discover more about Eli’s practice &raquo;</a></p>
+        <p>Ilya Minin (Eli) is a digital and multimedia artist working across CGI and 3D, experimental animation, video art, sound art, electronic and experimental music, UTAU and vocal synthesis, interactive media, games, performance and audiovisual work.</p>
+        <p>The practice moves between constructed images, synthetic voices, digital environments, sound and physical experience. Digital tools are treated not only as production technologies, but also as material through which questions of identity, memory, mediation, embodiment, culture and the digital uncanny can be examined.</p>
+        <p>eli_lab brings together current work and an older body of experiments, collaborations and documentation. The archive therefore includes finished artworks alongside unfinished projects, technical experiments, performances, exhibitions and earlier material that helps trace the development of the practice.</p>
+        <p><a href="../extra/art_practice.html">Explore the artistic practice &raquo;</a></p>
+        <p><a href="../extra/brief_history.html">Read the extended biography and historical record &raquo;</a></p>
+        <p class="archive-note">Older works may appear under the historical ELIAS ADAMS identity. These records are retained as part of the archive and are not treated as a separate current artist identity.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <img src="../../images/profile.png" alt="Portrait of Ilya Minin (Eli)" class="img-responsive" />
       </div>
-    </div>
-  <hr />
+    </section>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h2 class="page-header">Latest Projects</h2>
-    </div>
-  </div>
+    <hr />
 
-
-    <div class="col-md-4 col-sm-6 text-center">
-        <div class="thumbnail">
-          <a href="../../html/projects/animation/ewp_project.html"><img
-              src="../../images/EWP Project/ewp_scr_2_preview.png" alt="EWP Project"
-              class="img-responsive img-hover" /></a>
-          <div class="caption project-caption">
-            <h3>EWP Project</h3>
-            <p>Poetic CG animation examining fragmented identity and memory in surreal hometown landscapes. Runtime ~10
-              min (2019–2023).</p>
-          </div>
-        </div>
-      <!-- </div> -->
-
-      <div class="col-md-4 col-sm-6 text-center">
-        <div class="thumbnail">
-          <a href="../../html/projects/animation/daly_syndrome.html"><img src="../../images/Daly Syndrome/daly_prew.png"
-              alt="Dali Syndrome" class="img-responsive img-hover" /></a>
-          <div class="caption project-caption">
-            <h3>Dali Syndrome</h3>
-            <p>Animated film focused on psychosomatic and cognitive recovery using AI-generated character movements
-              (2023–present).</p>
-          </div>
-        </div>
+    <section class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">Selected Works</h2>
+        <p>Selected works from different periods of the archive. The complete project index contains additional animation, sound, interactive, game, collaboration and experimental material.</p>
       </div>
+    </section>
 
-      <div class="col-md-6 col-sm-6 text-center">
-        <div class="thumbnail">
-          <a href="../../html/projects/animation/kasane_teto.html"><img
-              src="../../images/Kasane Teto/last_day_preview.png" alt="The Last Day of Kasane Teto"
-              class="img-responsive img-hover" /></a>
-          <div class="caption project-caption">
-            <h3>The Last Day of Kasane Teto</h3>
-            <p>An emotional animation exploring mental health and connection through the poignant final moments of an
-              iconic figure (2025).</p>
-          </div>
-        </div>
+    <div id="aboutProjects" class="portfolio-section"></div>
+    <script type="module">
+      import { createPortfolio } from '../../js/projects_3.js';
+      document.addEventListener('DOMContentLoaded', () => {
+        createPortfolio([
+          { link: '../projects/animation/ewp_project.html', imgSrc: '../../images/EWP Project/ewp_scr_2_preview.png', alt: 'EWP Project' },
+          { link: '../projects/audio/geztalt.html', imgSrc: '../../images/Geztalt/geztalt_scr_2_preview.png', alt: 'Geztålt' },
+          { link: '../projects/interactive/belial.html', imgSrc: '../../images/Belial/belial_soft_preview.png', alt: 'Belial' },
+          { link: '../projects/games/outsider.html', imgSrc: '../../images/Games/outsider_preview_2.png', alt: 'Outsider' },
+          { link: '../projects/animation/the_last_day_of_kasane_teto.html', imgSrc: '../../images/Kasane Teto/last_day_preview.png', alt: 'The Last Day of Kasane Teto' },
+          { link: '../projects/animation/triple_baka_by_ilya_minin_(eli).html', imgSrc: '../../images/Triple Baka/triple_baka_preview.png', alt: 'Triple Baka' }
+        ], 'aboutProjects');
+      });
+    </script>
+
+    <section class="row" style="margin-top: 30px;">
+      <div class="col-lg-12">
+        <h2 class="page-header">Explore the Archive</h2>
       </div>
-
-      <div class="col-md-6 col-sm-6 text-center">
-        <div class="thumbnail">
-          <a href="../../html/projects/animation/triple_baka_by_ilya_minin_(eli).html"><img
-              src="../../images/Triple Baka/triple_baka_preview.png" alt="Triple Baka"
-              class="img-responsive img-hover" /></a>
-          <div class="caption project-caption">
-            <h3>Triple Baka</h3>
-            <p>A surreal autobiographical animation blending Vocaloid folklore and existential themes, coming in 2025.
-            </p>
-          </div>
-        </div>
-
-
-        <div class="col-md-4 col-sm-6 text-center">
-          <div class="thumbnail">
-            <a href="../../html/projects/animation/get_hit_below.html"><img
-                src="../../images/Triple Baka/triple_baka_preview.png" alt="Triple Baka"
-                class="img-responsive img-hover" /></a>
-            <div class="caption project-caption">
-              <h3>Get Hit Below</h3>
-              <p>A surreal autobiographical animation blending Vocaloid folklore and existential themes, coming in 2025.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div class="col-md-4"><h3><a href="../projects/all.html">Projects</a></h3><p>Browse the existing project taxonomy and its individual work records.</p></div>
+      <div class="col-md-4"><h3><a href="../extra/art_practice.html">Practice</a></h3><p>Graphics, painting, CGI, installations, photography, mixed techniques and experimental practice.</p></div>
+      <div class="col-md-4"><h3><a href="../extra/brief_history.html">History &amp; documentation</a></h3><p>Biography, exhibitions, performances, live events and older archival material.</p></div>
+    </section>
 
     <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <p>&copy; eli_lab 2025</p>
-        </div>
-      </div>
+      <div class="row"><div class="col-lg-12"><p>&copy; eli_lab 2026</p></div></div>
     </footer>
+  </main>
 
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/nav-menu.js" defer></script>
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/nav-menu.js" defer></script>
 </body>
-
 </html>
