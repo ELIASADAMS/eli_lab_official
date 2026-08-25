@@ -1,58 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>eli_lab</title>
-  <meta name="description" content="eli_lab">
-  <link href="../../css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../../css/modern-business.css" rel="stylesheet" />
-  <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Animation / Video Art — eli_lab</title><meta name="description" content="Animation, experimental film and audiovisual works by Ilya Minin (Eli).">
+  <link href="../../css/bootstrap.min.css" rel="stylesheet" /><link href="../../css/modern-business.css" rel="stylesheet" /><link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
-
-<body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="main-nav"></nav>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header"></h1>
-        <ol class="breadcrumb"></ol>
-      </div>
-
-      <div id="art-content-container"></div>
-
-      <script type="module">
-        import { createArtContent } from '../../js/animaContent.js';
-      
-        document.addEventListener('DOMContentLoaded', () => {
-          createArtContent([
-            {
-              title: 'EWP Project',
-              url: '../../html/projects/animation/ewp_project.html',
-              imgSrc: '../../images/EWP Project/ewp_scr_2.png',
-              imgAlt: 'EWP Project image',
-              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.'
-            },
-            {
-              title: 'Daly Syndrome',
-              url: '../../html/projects/animation/daly_syndrome.html',
-              imgSrc: '../../images/Daly Syndrome/daly_prew.png',
-              imgAlt: 'Daly Syndrome image',
-              description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.'
-            }
-          ], 'art-content-container');
-        });
-      </script>
-      
-  
-      <script src="../../js/jquery.js"></script>
-      <script src="../../js/bootstrap.min.js"></script>
-      <script src="../../js/nav-menu.js" defer></script>
-      <script src="../../../js/breadcrumb.js"></script>
-      <script src="../../../js/breadcrumb-map.js"></script>
-</body>
-
-</html>
+<body><nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="main-nav"></nav>
+<div class="container"><div class="row"><div class="col-lg-12"><h1 class="page-header"></h1><ol class="breadcrumb"></ol></div></div>
+<div id="art-content-container"></div>
+<script type="module">
+import { createArtContent } from '../../js/animaContent.js';
+document.addEventListener('DOMContentLoaded',()=>{createArtContent([
+{title:'EWP Project',url:'../../html/projects/animation/ewp_project.html',imgSrc:'../../images/EWP Project/ewp_scr_2.png',imgAlt:'EWP Project',description:'Experimental CGI / animation project developed between 2019 and 2023.'},
+{title:'Daly Syndrome',url:'../../html/projects/animation/daly_syndrome.html',imgSrc:'../../images/Daly Syndrome/daly_prew.png',imgAlt:'Daly Syndrome',description:'Animated project in development.'},
+{title:'The Last Day of Kasane Teto',url:'../../html/projects/animation/the_last_day_of_kasane_teto.html',imgSrc:'../../images/workinprogress 750x500.png',imgAlt:'The Last Day of Kasane Teto',description:'Animation centered on Kasane Teto, 2025. Documentation placeholder retained while the archive record is rebuilt.'},
+{title:'Triple Baka by Ilya Minin (Eli)',url:'../../html/projects/animation/triple_baka_by_ilya_minin_(eli).html',imgSrc:'../../images/workinprogress 750x500.png',imgAlt:'Triple Baka by Ilya Minin (Eli)',description:'2025 animation / music-video work. Documentation placeholder retained while the archive record is rebuilt.'},
+{title:'Bogorodskoe',url:'../../html/projects/animation/bogorodskoe.html',imgSrc:'../../images/workinprogress 750x500.png',imgAlt:'Bogorodskoe',description:'Experimental short film created in 2022 with Yulia Baranyuk.'},
+{title:'山は覚えている',url:'../../html/projects/animation/yama-ha-oboeteiru.html',imgSrc:'../../images/workinprogress 750x500.png',imgAlt:'山は覚えている',description:'Audiovisual / video-art work by Ilya Minin (Eli).'}
+],'art-content-container');});
+</script>
+<script src="../../js/jquery.js"></script><script src="../../js/bootstrap.min.js"></script><script src="../../js/nav-menu.js" defer></script><script src="../../js/breadcrumb.js" defer></script><script src="../../js/breadcrumb-map.js" defer></script>
+</body></html>
