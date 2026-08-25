@@ -1,12 +1,13 @@
 // projects.js
-export function createPortfolio(projectItems, containerId) {
+// Reusable portfolio renderer used by the homepage and archive-facing pages.
+// The existing row/column classes are intentionally preserved because the
+// site's Bootstrap-derived layout has been substantially customized.
+export function createPortfolio(projectItems, containerId, heading = 'Selected Projects') {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    // Clear existing content if any
     container.innerHTML = '';
 
-    // Create title row
     const titleRow = document.createElement('div');
     titleRow.className = 'row';
 
@@ -15,17 +16,15 @@ export function createPortfolio(projectItems, containerId) {
 
     const header = document.createElement('h2');
     header.className = 'page-header';
-    header.textContent = 'Latest Projects';
+    header.textContent = heading;
 
     titleCol.appendChild(header);
     titleRow.appendChild(titleCol);
     container.appendChild(titleRow);
 
-    // Create projects row
     const projectsRow = document.createElement('div');
     projectsRow.className = 'row';
 
-    // Loop through all projects and create their HTML
     projectItems.forEach(({ link, imgSrc, alt }) => {
         const projectCol = document.createElement('div');
         projectCol.className = 'col-md-4 col-sm-6';
@@ -37,6 +36,7 @@ export function createPortfolio(projectItems, containerId) {
         img.className = 'img-responsive img-portfolio img-hover';
         img.src = imgSrc;
         img.alt = alt || '';
+        img.loading = 'lazy';
 
         anchor.appendChild(img);
         projectCol.appendChild(anchor);
