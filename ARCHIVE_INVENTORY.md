@@ -6,7 +6,7 @@ Working rebuild map for `eli_lab_official`.
 
 This site is hosted on **Vercel** and contains a substantial custom frontend layer. The Bootstrap-derived files have been manually rewritten and are part of the existing design system. Do **not** replace them with stock Bootstrap or remove them simply because of their filenames.
 
-The existing JavaScript components are also intentional infrastructure for simplifying archive pages. Preserve their behavior and repair them incrementally.
+The existing JavaScript components are intentional infrastructure for simplifying archive pages. Preserve their behavior and repair them incrementally.
 
 ## Existing frontend system
 
@@ -19,6 +19,8 @@ The existing JavaScript components are also intentional infrastructure for simpl
 
 ### Reusable JavaScript
 - `js/projects_3.js` — reusable project grid
+- `js/projects_4.js` — project grid used by older indexes
+- `js/projects_text.js` — text project cards
 - `js/artPracticeGallery.js` — art-practice renderer
 - `js/content-section.js` — reusable history/content blocks
 - `js/animaContent.js` — animation/content component
@@ -32,31 +34,63 @@ The existing JavaScript components are also intentional infrastructure for simpl
 - `js/contact_me.js` — contact functionality
 - jQuery / bootstrap runtime / validation scripts remain compatibility dependencies until audited
 
-## Confirmed repairs
+## Confirmed repairs / migration work
 
 ### About
-`html/nav/about.html` had malformed/nested columns, mismatched project images/descriptions, a broken Kasane Teto URL, duplicated content and stale project information. It has been rebuilt as a current **About + archive gateway** while continuing to use the existing CSS and `projects_3.js` component.
+`html/nav/about.html` is now a current **About + archive gateway**. Its selected-work images point to actual assets in the new animation archive, and it now exposes dedicated CGI/3D and Artwork entry points.
 
 ### Art Practice
 `html/extra/art_practice.html` contained incorrect relative paths such as `../../html/...` from an already nested `/html/extra/` page. Those links were repaired while retaining `artPracticeGallery.js`.
 
 ### Project renderer
-`js/projects_3.js` remains structurally compatible with the existing layout but now accepts an optional section heading and lazy-loads project images. The old hardcoded `Latest Projects` label is no longer required.
+`js/projects_3.js` remains structurally compatible with the existing layout but now accepts an optional section heading and lazy-loads project images.
 
-## Existing archive layers
+### New image-backed indexes
+- `html/projects/cgi.html` — newly surfaced CGI / 3D archive material
+- `html/projects/artwork.html` — newly surfaced painting / graphics / installation / mixed-technique material
+- `html/projects/all.html` — expanded to expose the new archive categories
+- `html/projects/animation.html` — now uses the newly added Kasane Teto / Triple Baka documentation images instead of generic WIP imagery
+- `html/workinprogress.html` — generic placeholder converted from Lorem Ipsum into an explicit archive-record status page
 
-| Layer | Location | Purpose |
-|---|---|---|
-| Home | `index.html` | Hero/carousel + dynamic access to archive contents |
-| Project indexes | `html/projects/*.html` | Existing project taxonomy |
-| Project records | `html/projects/{animation,audio,interactive,games,collaborations}/` | Individual works/collaborations |
-| Practice | `html/extra/art_practice.html` + nested pages | Older media/practice archive |
-| History | `html/extra/brief_history.html` | Major historical source |
-| Documentation | `html/extra/{exhibitions,performances,live_events,videoart}.html` | Events/documentation |
-| Navigation | `html/nav/` | About/contact |
-| WIP | `html/workinprogress.html` | Unfinished/experimental work |
-| Historical sources | `old_pages/` | Older versions; research material |
-| Images | `images/` | Large visual archive requiring mapping |
+## Image archive gaps identified
+
+The image repository is substantially broader than the old project indexes. The following clusters were confirmed as material needing archive exposure or further page mapping:
+
+### CGI / 3D
+- `images/CG/3D ESSENTIALS (2020-2021)/` — Towny, Gaika, Drema, Swirl, Neuron Brain and related studies
+- `images/CG/Latest/` — Bloody, Bloody 2
+- `images/CG/Dessigns/`
+- `images/CG/Graph/`
+- `images/CG/Teto/`
+- `images/CG/semi-spatial_apartment/`
+- `images/CG Design Ilya Minin (Eli)/` — Bonza, Mockups, Motion Design, Online Shop, Others
+- `images/CG For Site/` — 3D design, album covers, events, logo and other site-design material
+
+The first representative CGI records are now surfaced through `cgi.html`; the remaining clusters still need individual identification rather than being falsely assigned to projects.
+
+### Artwork / physical practice
+- `images/Artwork/Graphics/Jewish gift/`
+- `images/Artwork/Installations/No Skin/`
+- `images/Artwork/Mixed Technique/`
+- `images/Artwork/Painting/`
+- `images/Artwork/Single Photos/`
+
+Representative entries are now surfaced through `artwork.html`. The individual works still require historical titles/dates/context before becoming definitive records.
+
+### Animation
+The new image material includes substantial documentation for:
+- `Tetopocalypsis (1–10).png`
+- `Tetopocalypsis_additional (1–6).png`
+- `the_last_day_of_KT` JPG/PNG sequence
+- `the_last_day_of_KT_Additional` JPG sequence
+- `triple_baka_screens` JPG/PNG sequence
+
+The animation index now uses representative real images for the latter two works. Tetopocalypsis is still an identifiable image cluster without a verified project record and should be investigated next.
+
+### Collaborations / performance
+These image clusters contain additional documentation but should remain tied to their existing collaboration/performance taxonomy until individual records are checked:
+- `images/Collaborations/`
+- `images/Performances/`
 
 ## Works currently confirmed
 
@@ -66,12 +100,16 @@ The existing JavaScript components are also intentional infrastructure for simpl
 - Get Hit Below — existing page requires verification
 - The Last Day of Kasane Teto — 2025
 - Triple Baka by Ilya Minin (Eli) — 2025
+- Bogorodskoe — 2022
+- 山は覚えている
+- Tetopocalypsis — image archive present; project metadata/page still to be verified
 
 ### Audio / sound
 - Geztålt
 - eli
 - Tanerlach
-- nested material under `html/projects/audio/`
+- Someone's voice (だれかの声) — feat. Akane Iirai
+- しあわせがこわい — feat. 友人 / Eugene
 
 ### Interactive
 - Belial
@@ -89,10 +127,13 @@ The existing JavaScript components are also intentional infrastructure for simpl
 - Graphics
 - Painting
 - CGI
-- Installations
+- Installations / No Skin
 - Mixed Technique
 - Photoseries
 - Single Photos
+- Jewish gift
+- 3D Essentials (2020–2021)
+- Bonza / CG design material
 
 ### Collaborations
 Existing records include Anna Mikhaylova, Asya Melnikova, Blikk, Dynakyris, E6, Georgiy Orlov Davydovsky, Igor Yanovsky, Julia Baranyuk, Marysia Izdebska, Nipagana, Oleg Makarov, Romaner, Sasha E__B and additional records requiring enumeration.
@@ -140,6 +181,7 @@ eli_lab
 │   ├── Animation / Video
 │   ├── CGI / 3D
 │   ├── Sound / Music
+│   ├── Artwork / Physical Practice
 │   ├── Interactive
 │   ├── Games
 │   ├── Installation
@@ -161,11 +203,10 @@ eli_lab
 
 ## Next sequence
 
-1. Audit every reusable JS component and its consumers.
-2. Enumerate every project/index/extra page and classify complete, incomplete, duplicate, placeholder or historical.
-3. Map `images/` assets to actual works.
-4. Rebuild Projects indexes without breaking existing URLs.
-5. Reorganize Extra/documentation.
-6. Rework Biography/History from the old source.
-7. Add newer eli_lab works with verified assets and metadata.
-8. Only then remove genuinely unused dependencies.
+1. Enumerate the remaining `images/CG`, `CG Design`, `CG For Site`, `Artwork` and `Animation` clusters and identify their actual projects.
+2. Audit each corresponding existing page for broken/placeholder content.
+3. Create definitive records for identified works; use `workinprogress.html` only where metadata is genuinely incomplete.
+4. Expand Extra/documentation using the historical image clusters.
+5. Rework Biography/History from the old source.
+6. Add newer eli_lab works with verified assets and metadata.
+7. Only then remove genuinely unused dependencies.
