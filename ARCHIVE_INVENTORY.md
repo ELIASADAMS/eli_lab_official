@@ -1,189 +1,171 @@
 # eli_lab archive inventory
 
-Initial inventory for the rebuild of `eli_lab_official`.
+Working rebuild map for `eli_lab_official`.
 
-This is a **classification document**, not a claim that every historical work is already fully documented. Existing HTML is treated as source material; missing facts are intentionally marked for later verification.
+## Core rule
 
-## Current repository layers
+This site is hosted on **Vercel** and contains a substantial custom frontend layer. The Bootstrap-derived files have been manually rewritten and are part of the existing design system. Do **not** replace them with stock Bootstrap or remove them simply because of their filenames.
 
-| Layer | Location | Role in new archive |
+The existing JavaScript components are also intentional infrastructure for simplifying archive pages. Preserve their behavior and repair them incrementally.
+
+## Existing frontend system
+
+### CSS
+- `css/bootstrap.css` — customized framework layer
+- `css/bootstrap.min.css` — active compact framework layer
+- `css/bootstrap.min copy.css` — duplicate/variant; compare before removal
+- `css/modern-business.css` — site-specific layer
+- many historical pages also use inline/custom styles
+
+### Reusable JavaScript
+- `js/projects_3.js` — reusable project grid
+- `js/artPracticeGallery.js` — art-practice renderer
+- `js/content-section.js` — reusable history/content blocks
+- `js/animaContent.js` — animation/content component
+- `js/collaborators.js` — collaborator component
+- `js/exhibitions.js` — exhibition component
+- `js/liveEvents.js` — live-event component
+- `js/performances.js` — performance component
+- `js/breadcrumb.js` + `js/breadcrumb-map.js` — breadcrumb system
+- `js/my-carousel.js` + `js/carousel-init.js` — carousel system
+- `js/nav-menu.js` — shared navigation
+- `js/contact_me.js` — contact functionality
+- jQuery / bootstrap runtime / validation scripts remain compatibility dependencies until audited
+
+## Confirmed repairs
+
+### About
+`html/nav/about.html` had malformed/nested columns, mismatched project images/descriptions, a broken Kasane Teto URL, duplicated content and stale project information. It has been rebuilt as a current **About + archive gateway** while continuing to use the existing CSS and `projects_3.js` component.
+
+### Art Practice
+`html/extra/art_practice.html` contained incorrect relative paths such as `../../html/...` from an already nested `/html/extra/` page. Those links were repaired while retaining `artPracticeGallery.js`.
+
+### Project renderer
+`js/projects_3.js` remains structurally compatible with the existing layout but now accepts an optional section heading and lazy-loads project images. The old hardcoded `Latest Projects` label is no longer required.
+
+## Existing archive layers
+
+| Layer | Location | Purpose |
 |---|---|---|
-| Homepage | `index.html` | New archive-first entrance |
-| Project indexes | `html/projects/*.html` | Legacy work taxonomy; migrate into master Works index |
-| Project records | `html/projects/{animation,audio,interactive,games,collaborations}/` | Existing artwork/project records |
-| Practice / history | `html/extra/` | Biography, artistic practice, exhibitions, performances, events, video art |
-| Navigation pages | `html/nav/` | About and contact |
-| WIP | `html/workinprogress.html` | Experiments / unfinished work |
-| Historical pages | `old_pages/` | Source material; preserve, compare, extract, do not publish blindly |
-| Images | `images/` | Existing visual archive; requires later asset inventory |
-| Legacy framework | `css/`, `js/`, `font-awesome/`, `node_modules/` | Technical debt / compatibility layer |
+| Home | `index.html` | Hero/carousel + dynamic access to archive contents |
+| Project indexes | `html/projects/*.html` | Existing project taxonomy |
+| Project records | `html/projects/{animation,audio,interactive,games,collaborations}/` | Individual works/collaborations |
+| Practice | `html/extra/art_practice.html` + nested pages | Older media/practice archive |
+| History | `html/extra/brief_history.html` | Major historical source |
+| Documentation | `html/extra/{exhibitions,performances,live_events,videoart}.html` | Events/documentation |
+| Navigation | `html/nav/` | About/contact |
+| WIP | `html/workinprogress.html` | Unfinished/experimental work |
+| Historical sources | `old_pages/` | Older versions; research material |
+| Images | `images/` | Large visual archive requiring mapping |
 
 ## Works currently confirmed
 
 ### Animation
-
-- `EWP Project` — `html/projects/animation/ewp_project.html` — 2019–2023 source material
-- `Daly Syndrome` — `html/projects/animation/daly_syndrome.html` — 2023–present / in development
-- `Get Hit Below` — `html/projects/animation/get_hit_below.html` — metadata requires verification
-- `The Last Day of Kasane Teto` — `html/projects/animation/the_last_day_of_kasane_teto.html` — 2025
-- `Triple Baka by Ilya Minin (Eli)` — `html/projects/animation/triple_baka_by_ilya_minin_(eli).html` — 2025
-
-Legacy index: `html/projects/animation.html`
+- EWP Project — 2019–2023
+- Daly Syndrome — in development
+- Get Hit Below — existing page requires verification
+- The Last Day of Kasane Teto — 2025
+- Triple Baka by Ilya Minin (Eli) — 2025
 
 ### Audio / sound
-
-- `Geztålt` — `html/projects/audio/geztalt.html` — collaborative sound/media project
-- `eli` — `html/projects/audio/eli.html` — project page; details require normalization
-- `Tanerlach` — `html/projects/audio/tanerlach.html` — project page; details require normalization
-- Nested directories also exist for `audio/eli` and `audio/geztalt`.
-
-Legacy index: `html/projects/audio.html`
+- Geztålt
+- eli
+- Tanerlach
+- nested material under `html/projects/audio/`
 
 ### Interactive
-
-- `Belial` — `html/projects/interactive/belial.html`
-
-Legacy index: `html/projects/interactive.html`
+- Belial
 
 ### Games
+- Desolation Odissey
+- Elysium
+- Metaliminal
+- Night Mafia
+- Outsider
+- Sleepdom
 
-- `Desolation Odissey` — `html/projects/games/desolation_odissey.html`
-- `Elysium` — `html/projects/games/elysium.html`
-- `Metaliminal` — `html/projects/games/metaliminal.html`
-- `Night Mafia` — `html/projects/games/night_mafia.html`
-- `Outsider` — `html/projects/games/outsider.html`
-- `Sleepdom` — `html/projects/games/sleepdom.html`
-
-Legacy index: `html/projects/games.html`
+### Art Practice / older material
+- Serial Experiments Lens
+- Graphics
+- Painting
+- CGI
+- Installations
+- Mixed Technique
+- Photoseries
+- Single Photos
 
 ### Collaborations
+Existing records include Anna Mikhaylova, Asya Melnikova, Blikk, Dynakyris, E6, Georgiy Orlov Davydovsky, Igor Yanovsky, Julia Baranyuk, Marysia Izdebska, Nipagana, Oleg Makarov, Romaner, Sasha E__B and additional records requiring enumeration.
 
-Individual collaboration records currently exist under `html/projects/collaborations/`, including confirmed pages for:
+## Historical source
 
-- Anna Mikhaylova
-- Asya Melnikova
-- Blikk
-- Dynakyris
-- E6 (directory)
-- Georgiy Orlov Davydovsky
-- Igor Yanovsky
-- Julia Baranyuk
-- Marysia Izdebska
-- Nipagana
-- Oleg Makarov
-- Romaner
-- Sasha E__B
-- additional collaboration records in the same directory require the next full API enumeration pass
+`html/extra/brief_history.html` contains material that should be reorganized rather than discarded:
 
-Legacy index: `html/projects/collaborations.html`
+- artist statement
+- biography
+- education
+- professional history
+- major works
+- exhibitions
+- performances
+- lectures
+- collaborations
 
-## Practice / documentation source material
+The eventual structure should separate **About / Practice / Biography / Timeline / Documentation** while retaining historical facts.
 
-### `html/extra/`
+## Identity
 
-- `art_practice.html` — artistic practice / conceptual material
-- `brief_history.html` — major historical source; contains artist statement, education, experience, works, exhibitions, performances, lectures and collaborations
-- `exhibitions.html` — exhibition documentation
-- `live_events.html` — live event documentation
-- `performances.html` — performance history
-- `videoart.html` — video-art category
-- nested directories exist for `art_practice`, `live_events`, and `performances`
+Current identity: **Ilya Minin (Eli)**.
 
-These should become archive dimensions, not an undifferentiated `Extra` menu.
+Historical **ELIAS ADAMS** material should remain identifiable as archival provenance where relevant.
 
-## Navigation / identity source material
+## New work migration
 
-### `html/nav/`
+The old site predates a substantial part of the current eli_lab archive. Newer audiovisual, CGI, animation, sound, UTAU/Vocal Synth, Japan/field-recording and related works should be added after their actual repository assets/pages are mapped. Do not invent paths or images.
 
-- `about.html`
-- `contact.html`
-
-The current identity should be **Ilya Minin (Eli)**. Historical **ELIAS ADAMS** material is retained as provenance and should eventually receive an explicit archive label.
-
-## Work in progress
-
-- `html/workinprogress.html`
-
-This should become a legitimate `Experiments / WIP` archive category. Placeholder content should be replaced by explicit statuses rather than presented as completed works.
-
-## Historical source pages
-
-### `old_pages/`
-
-- `about copy.html`
-- `brief_history copy.html`
-- `brief_history copy 2.html`
-- `temptation.html`
-- `test.html`
-- `upd.html`
-
-These are research sources. The multiple biography variants are particularly important because they may contain information that disappeared from the current page.
-
-## Technical debt discovered during initial rebuild
-
-1. Homepage depends on Bootstrap and a legacy carousel for basic structure.
-2. Navigation depends on Bootstrap's collapse/dropdown behavior and uses absolute `/html/...` URLs, which can break on repository-based GitHub Pages deployments.
-3. `projects_3.js` labels the homepage section `Latest Projects` even though the list is a fixed historical selection.
-4. Several legacy pages contain nested `.row` structures, inline styles and inconsistent containers.
-5. `Geztålt` contains placeholder `Lorem ipsum` material and links that point to missing/incorrect relative paths; this is an explicit cleanup target.
-6. Legacy pages share duplicated or copied HTML structures and, in several cases, identical blob content despite different filenames.
-7. Bootstrap is duplicated (`bootstrap.css`, `bootstrap.min.css`, `bootstrap.min copy.css`).
-8. `node_modules/` is committed and should eventually be removed from the static archive repository if it is not required by a real build process.
-9. `app.js` is empty.
-10. The archive has no single machine-readable source of truth for title, year, medium, status, collaborators, media and related works.
-
-## New structure already started
-
-- `css/eli-archive.css` — responsive design system for new archive pages
-- `html/archive/index.html` — new archive entrance / migration map
-- `index.html` — rebuilt archive-first homepage
-- `js/nav-menu.js` — rebuilt navigation that works without Bootstrap and resolves the GitHub Pages repository root dynamically
-
-## Target taxonomy
+## Target structure
 
 ```text
 eli_lab
-├── Works
-│   ├── Selected
+├── Home
+│   ├── Hero / conceptual entry
+│   └── Selected Projects / archive access
+├── About
+│   ├── Current practice
+│   ├── Artist statement
+│   ├── Biography
+│   └── Archive context
+├── Projects
 │   ├── All
+│   ├── Animation / Video
 │   ├── CGI / 3D
-│   ├── Animation
-│   ├── Video Art
 │   ├── Sound / Music
 │   ├── Interactive
 │   ├── Games
 │   ├── Installation
-│   └── Performance
-├── Archive
-│   ├── Timeline
-│   ├── Projects
-│   ├── Experiments / WIP
-│   └── ELIAS ADAMS Archive
-├── Practice
-│   ├── About
-│   ├── Artist Statement
-│   ├── Practice / Methods
-│   └── Biography
-├── Documentation
+│   ├── Performance
+│   └── Collaborations
+├── Extra / Documentation
+│   ├── Art Practice
 │   ├── Exhibitions
 │   ├── Performances
 │   ├── Live Events
-│   ├── Lectures
-│   └── Collaborations
-└── Index
-    ├── People
-    ├── Characters
-    ├── Technologies
-    ├── Locations
-    └── Themes
+│   ├── Video Art
+│   └── Lectures / historical documentation
+├── Archive
+│   ├── Timeline
+│   ├── Experiments / WIP
+│   └── ELIAS ADAMS archive
+└── Contact
 ```
 
-## Next migration pass
+## Next sequence
 
-1. Enumerate every remaining collaboration and nested project file.
-2. Audit all HTML for broken links, placeholder text, duplicate structures and malformed markup.
-3. Build a master work data file from confirmed facts only.
-4. Normalize artwork records into one template.
-5. Move historical biography material into About / Biography / Timeline / Documentation without losing source text.
-6. Replace remaining legacy Bootstrap layouts progressively; do not break working historical URLs until replacements exist.
-7. Audit the `images/` tree and map assets to works.
+1. Audit every reusable JS component and its consumers.
+2. Enumerate every project/index/extra page and classify complete, incomplete, duplicate, placeholder or historical.
+3. Map `images/` assets to actual works.
+4. Rebuild Projects indexes without breaking existing URLs.
+5. Reorganize Extra/documentation.
+6. Rework Biography/History from the old source.
+7. Add newer eli_lab works with verified assets and metadata.
+8. Only then remove genuinely unused dependencies.
