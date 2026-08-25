@@ -1,66 +1,63 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const navHTML = `
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/index.html">Eli</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/html/nav/about.html">About</a></li>
-          <li><a href="/html/nav/contact.html">Contact</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/html/projects/animation.html">Animation</a></li>
-              <li><a href="/html/projects/interactive.html">Interactive Art</a></li>
-              <li><a href="/html/projects/audio.html">Audio</a></li>
-              <li><a href="/html/projects/collaborations.html">Collaborations</a></li>
-              <li><a href="/html/projects/games.html">Games</a></li>
-              <li><a href="/html/projects/all.html">All</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Extra <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/html/extra/live_events.html">Live Events</a></li>
-              <li><a href="/html/extra/exhibitions.html">Exhibitions</a></li>
-              <li><a href="/html/extra/performances.html">Performances</a></li>
-              <li><a href="/html/extra/art_practice.html">Art Practice</a></li>
-              <li><a href="/html/extra/brief_history.html">Brief History</a></li>
-              <li><a href="/html/extra/videoart.html">Videoart</a></li>
-            </ul>
-          </li>
-          <li><a href="/html/workinprogress.html"><span style="color: #656466;">NXT</span></a></li>
-        </ul>
+document.addEventListener("DOMContentLoaded", () => {
+  const host = document.getElementById("main-nav");
+  if (!host) return;
+
+  // Works both at a custom domain and at /<repository>/ on GitHub Pages.
+  const path = location.pathname;
+  const marker = "/html/";
+  const root = path.includes(marker) ? path.split(marker)[0] + "/" : path.replace(/index\.html$/, "");
+  const url = (p) => root + p.replace(/^\//, "");
+
+  host.className = "eli-site-header";
+  host.innerHTML = `
+    <div class="eli-nav">
+      <a class="eli-brand" href="${url("index.html")}">eli_lab</a>
+      <button class="eli-nav-toggle" type="button" aria-expanded="false" aria-controls="eli-nav-links">Menu</button>
+      <div class="eli-nav-links" id="eli-nav-links">
+        <a href="${url("html/projects/all.html")}">Works</a>
+        <a href="${url("html/archive/index.html")}">Archive</a>
+        <div class="eli-nav-group">
+          <button type="button" aria-expanded="false">Practice +</button>
+          <div class="eli-nav-menu">
+            <a href="${url("html/nav/about.html")}">About</a>
+            <a href="${url("html/extra/art_practice.html")}">Art Practice</a>
+            <a href="${url("html/extra/brief_history.html")}">Biography / History</a>
+            <a href="${url("html/extra/videoart.html")}">Video Art</a>
+          </div>
+        </div>
+        <div class="eli-nav-group">
+          <button type="button" aria-expanded="false">Documentation +</button>
+          <div class="eli-nav-menu">
+            <a href="${url("html/extra/exhibitions.html")}">Exhibitions</a>
+            <a href="${url("html/extra/performances.html")}">Performances</a>
+            <a href="${url("html/extra/live_events.html")}">Live Events</a>
+            <a href="${url("html/projects/collaborations.html")}">Collaborations</a>
+          </div>
+        </div>
+        <a href="${url("html/workinprogress.html")}">NXT / WIP</a>
+        <a href="${url("html/nav/contact.html")}">Contact</a>
       </div>
     </div>
   `;
 
-  const navContainer = document.getElementById("main-nav");
-  if (!navContainer) return;
-  navContainer.innerHTML = navHTML;
+  const toggle = host.querySelector(".eli-nav-toggle");
+  const links = host.querySelector(".eli-nav-links");
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
 
-  const currentPath = location.pathname.toLowerCase();
+  host.querySelectorAll(".eli-nav-group > button").forEach(button => {
+    button.addEventListener("click", () => {
+      const group = button.parentElement;
+      const open = group.classList.toggle("open");
+      button.setAttribute("aria-expanded", String(open));
+    });
+  });
 
-  function normalizePath(href) {
-    const a = document.createElement("a");
-    a.href = href;
-    return a.pathname.toLowerCase();
-  }
-
-  const links = navContainer.querySelectorAll("a[href]");
-  links.forEach(link => {
-    let href = link.getAttribute("href").trim();
-    if (href === "#" || href === "") return;
-
-    if (normalizePath(href) === currentPath) {
-      const li = link.closest("li");
-      if (li) {
-        li.classList.add("active");
-      }
-    }
+  const current = location.pathname.replace(/\\/+$/, "").toLowerCase();
+  host.querySelectorAll("a[href]").forEach(link => {
+    const target = new URL(link.href, location.href).pathname.replace(/\\/+$/, "").toLowerCase();
+    if (target === current) link.classList.add("active");
   });
 });
